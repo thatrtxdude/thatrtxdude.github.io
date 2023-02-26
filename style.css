@@ -47,6 +47,7 @@
     width: 450px;
     background: rgba(0, 0, 0, 0.8);
     padding: 40px;
+    border-radius: 5px;
     text-align: center;
     margin: auto;
     margin-top: 5%;
@@ -72,6 +73,7 @@
     width: 450px;
     background: rgba(0, 0, 0, 0.8);
     padding: 40px;
+    border-radius: 5px;
     text-align: center;
     margin: auto;
     margin-top: 3%;
@@ -81,8 +83,8 @@
   .box2{
     width: 450px;
     background: rgba(0, 0, 0, 0.8);
-    background-size: 400% 400%;
     padding: 40px;
+    border-radius: 5px;
     text-align: center;
     margin: auto;
     margin-top: 3%;
@@ -124,9 +126,41 @@
     font-weight: 100; 
   }
 
+  .box1 h1{
+    
+    letter-spacing: 0px;
+    font-weight: 100;
+   }
+
+  .box1 h5{
+    letter-spacing: 0px;
+    font-weight: 100; 
+  }
+
+  .box2 h1{
+    
+    letter-spacing: 0px;
+    font-weight: 100;
+   }
+
+  .box2 h5{
+    
+    letter-spacing: 0px;
+    font-weight: 100; 
+  }
+
   .box p{ 
     letter-spacing: 0px;
   }
+
+  .box1 p{ 
+    letter-spacing: 0px;
+  }
+
+  .box2 p{ 
+    letter-spacing: 0px;
+  }
+
   ul{
     margin: 0;
     padding: 0;
