@@ -44,7 +44,20 @@
     }
 
   .box{
-    width: 450px;
+    width: 50vh;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    color: white;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .box1{
+    width: 50vh;
+    top: 10px;
     background: rgba(0, 0, 0, 0.8);
     padding: 40px;
     border-radius: 5px;
@@ -69,28 +82,6 @@
     transition: all ease-in-out 250ms;
   }
 
-  .box1{
-    width: 450px;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 40px;
-    border-radius: 5px;
-    text-align: center;
-    margin: auto;
-    margin-top: 3%;
-    color: white;
-    font-family: 'Inter', sans-serif;
-  }
-  .box2{
-    width: 450px;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 40px;
-    border-radius: 5px;
-    text-align: center;
-    margin: auto;
-    margin-top: 3%;
-    color: white;
-    font-family: 'Inter', sans-serif;
-  }
   .box-img{
     border-radius: 50%;
     width: 200px;
