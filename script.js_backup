@@ -1,0 +1,108 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const terminal = document.getElementById('terminal');
+    const inputContainer = document.createElement('div');
+    inputContainer.classList.add('input-container');
+    terminal.appendChild(inputContainer);
+
+    const prompt = document.createElement('span');
+    prompt.classList.add('prompt');
+    prompt.innerText = 'user@website:~$ ';
+    inputContainer.appendChild(prompt);
+
+    const inputElement = createInputElement();
+    inputContainer.appendChild(inputElement);
+
+    const commandHistory = ['Type help for more information']; // Array to store command history
+
+    let historyIndex = 0; // Index to navigate command history
+
+    inputElement.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const command = inputElement.value;
+            const response = handleCommand(command);
+            commandHistory.push(command); // Add command to history
+            historyIndex = commandHistory.length; // Reset history index
+            displayCommandResponse(response);
+            inputElement.value = ''; // Clear the input value
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            // Navigate command history in reverse
+            if (historyIndex > 0) {
+                historyIndex--;
+                inputElement.value = commandHistory[historyIndex];
+            }
+        } else if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            // Navigate command history forward
+            if (historyIndex < commandHistory.length - 1) {
+                historyIndex++;
+                inputElement.value = commandHistory[historyIndex];
+            } else if (historyIndex === commandHistory.length - 1) {
+                // Clear input when reaching the end of history
+                inputElement.value = '';
+            }
+        }
+    });
+
+    function createInputElement() {
+        const input = document.createElement('input');
+        input.classList.add('input');
+        return input;
+    }
+
+    function displayCommandResponse(response) {
+    // Construct the entire content including command history and response
+    const terminalContent = commandHistory
+        .map((cmd) => `<p><span class="prompt">thatrtxdude@website:~$</span> ${cmd}</p>`)
+        .join('') + `<p>${response}</p>`;
+
+    // Update the terminal content
+    terminal.innerHTML = terminalContent;
+
+    terminal.scrollTop = terminal.scrollHeight;
+
+    // Focus and scroll to the new input box after displaying the command and response
+    terminal.appendChild(inputElement);
+    inputElement.focus();
+    }
+
+    let audio = new Audio('sounds/1.mp3');
+    function handleCommand(command) {
+        switch (command.toLowerCase()) {
+            case 'ls':
+                return 'info.txt setup.txt socials.txt';
+            case 'cat info.txt':
+                return "I mostly make mods for Source games, go on a walk or play some games here and there. I also like computers and programming. And open-source software. </br> I consider myself an open-source advocate (even though im forced to use shit like photoshop). I was born in Germany and I'll probably stay here for the rest of my life as well. </br> Maybe.";
+            case 'cat setup.txt':
+                return 'XFX Radeon 6800XT, Ryzen 7 5800x3D, 32GB DDR4 3200Mhz, Razer Huntsman Mini, Razer Deathadder v2 X Hyperspeed, Beyerdynamic DT770 PRO, NZXT Capsule Mic, Logitech G29 + H-Shifter';
+            case 'cat socials.txt':
+                return '<a href="https://steamcommunity.com/id/thatrtxdude/">Steam</a> | <a href="https://github.com/thatrtxdude">Github</a> | Discord: thatrtxdude | Matrix: @thatrtxdude:matrix.org';
+            case 'help':
+                return 'Available commands: ls (List all files), cat (Open .txt files), help';
+            case 'kissinger':
+                return 'Please piss on his grave';
+            case 'rorta':
+                return 'Insertion will be finished soon (trust)'
+            case 'subahibi':
+                audio.volume = 0.1;
+                audio.play();
+                return 'Live happily! (type mute to stop the music)'
+            case 'mute':
+                audio.pause();
+                audio.currentTime = 0;
+                return ''
+            case 'cat':
+                return 'Please enter a file to open!'
+            default:
+                return 'Command not recognized';
+        }
+    }
+
+    // Optional: Add initial commands and responses
+    displayCommandResponse('ls', 'file1.txt file2.txt');
+    displayCommandResponse('cat file1.txt', 'Contents of file1.txt');
+    displayCommandResponse('help', 'Available commands: ls, cat file1.txt, help');
+    displayCommandResponse('', '');
+
+});
